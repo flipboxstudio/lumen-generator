@@ -1,0 +1,23 @@
+{
+    "name": "flipbox/lumen-generator",
+    "description": "A Lumen Generator You Are Missing",
+    "type": "library",
+    "require": {
+        "illuminate/support": "^5.3",
+        "symfony/var-dumper": "^3.1",
+        "psy/psysh": "^0.7.2",
+        "classpreloader/classpreloader": "^3.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Krisan Alfa Timur",
+            "email": "krisan47@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Flipbox\\LumenGenerator\\": "src/LumenGenerator/"
+        }
+    }
+}
