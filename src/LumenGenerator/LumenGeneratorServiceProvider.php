@@ -4,6 +4,7 @@ namespace Flipbox\LumenGenerator;
 
 use Illuminate\Support\Composer;
 use Illuminate\Support\ServiceProvider;
+use Appzcoder\LumenRoutesList\RoutesCommandServiceProvider;
 
 class LumenGeneratorServiceProvider extends ServiceProvider
 {
@@ -53,6 +54,7 @@ class LumenGeneratorServiceProvider extends ServiceProvider
         $this->registerCommands($this->commands);
 
         if (env('APP_ENV') === 'local') {
+            $this->app->register(RoutesCommandServiceProvider::class);
             $this->registerCommands($this->devCommands);
         }
     }
