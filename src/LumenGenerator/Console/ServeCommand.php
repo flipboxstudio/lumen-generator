@@ -43,7 +43,11 @@ class ServeCommand extends Command
 
         $this->info("Laravel development server started on http://{$host}:{$port}/");
 
-        passthru("{$binary} -S {$host}:{$port} {$base}/server.php");
+        if (file_exists("{$base}/server.php")) {
+            passthru("{$binary} -S {$host}:{$port} {$base}/server.php");
+        } else {
+            passthru("{$binary} -S {$host}:{$port} -t {$base}/public/");
+        }
     }
 
     /**

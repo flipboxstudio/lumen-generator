@@ -4,9 +4,51 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "16d5fc7ee54b9b927fe3daf7a6ef079f",
-    "content-hash": "58853ddd129a211ac8d163497226f4fa",
+    "hash": "68ab0893a334bfed13b0b3b4a9caf017",
+    "content-hash": "8a57f5fa9201f8bf857b33fbe5ecbabe",
     "packages": [
+        {
+            "name": "appzcoder/lumen-routes-list",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/appzcoder/lumen-route-list.git",
+                "reference": "8949506c3f6e75a6e4bbfd6e1f74aea58c2f82b1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/appzcoder/lumen-route-list/zipball/8949506c3f6e75a6e4bbfd6e1f74aea58c2f82b1",
+                "reference": "8949506c3f6e75a6e4bbfd6e1f74aea58c2f82b1",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Appzcoder\\LumenRoutesList\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sohel Amin",
+                    "email": "sohelamincse@gmail.com",
+                    "homepage": "http://www.appzcoder.com"
+                }
+            ],
+            "description": "Lumen Routes List Show",
+            "keywords": [
+                "lumen",
+                "route list"
+            ],
+            "time": "2015-08-25 14:03:42"
+        },
         {
             "name": "classpreloader/classpreloader",
             "version": "3.0.0",
