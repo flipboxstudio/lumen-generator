@@ -212,6 +212,16 @@ class LumenGeneratorServiceProvider extends ServiceProvider
     /**
      * Register the command.
      */
+    protected function registerSeederMakeCommand()
+    {
+        $this->app->singleton('command.seeder.make', function ($app) {
+            return new Console\SeederMakeCommand($app['files']);
+        });
+    }
+
+    /**
+     * Register the command.
+     */
     protected function registerServeCommand()
     {
         $this->app->singleton('command.serve', function () {
