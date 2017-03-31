@@ -3,9 +3,12 @@
 namespace Flipbox\LumenGenerator\Console;
 
 use Illuminate\Console\Command;
+use Illuminate\Console\ConfirmableTrait;
 
 class KeyGenerateCommand extends Command
 {
+    use ConfirmableTrait;
+
     /**
      * The name and signature of the console command.
      *
