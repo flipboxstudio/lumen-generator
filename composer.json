@@ -5,7 +5,7 @@
     "require": {
         "illuminate/support": "^5.3",
         "symfony/var-dumper": "^3.1",
-        "psy/psysh": "^0.7.2",
+        "psy/psysh": "^0.8.3",
         "classpreloader/classpreloader": "^3.0",
         "appzcoder/lumen-routes-list": "^1.0"
     },
