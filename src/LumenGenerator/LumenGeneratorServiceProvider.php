@@ -4,7 +4,6 @@ namespace Flipbox\LumenGenerator;
 
 use Illuminate\Support\Composer;
 use Illuminate\Support\ServiceProvider;
-use Appzcoder\LumenRoutesList\RoutesCommandServiceProvider;
 
 class LumenGeneratorServiceProvider extends ServiceProvider
 {
@@ -23,6 +22,7 @@ class LumenGeneratorServiceProvider extends ServiceProvider
     protected $commands = [
         'KeyGenerate' => 'command.key.generate',
         'Tinker' => 'command.tinker',
+        'RouteList' => 'command.route.list',
         'ClearCompiled' => 'command.clear.compiled',
         'Optimize' => 'command.optimize',
     ];
@@ -54,7 +54,6 @@ class LumenGeneratorServiceProvider extends ServiceProvider
         $this->registerCommands($this->commands);
 
         if (env('APP_ENV') === 'local') {
-            $this->app->register(RoutesCommandServiceProvider::class);
             $this->registerCommands($this->devCommands);
         }
     }
@@ -73,6 +72,16 @@ class LumenGeneratorServiceProvider extends ServiceProvider
         }
 
         $this->commands(array_values($commands));
+    }
+
+    /**
+     * Register the command.
+     */
+    protected function registerRouteListCommand()
+    {
+        $this->app->singleton('command.route.list', function ($app) {
+            return new Console\RouteListCommand();
+        });
     }
 
     /**
