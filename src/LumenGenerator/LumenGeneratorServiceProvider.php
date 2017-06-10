@@ -44,6 +44,7 @@ class LumenGeneratorServiceProvider extends ServiceProvider
         'PolicyMake' => 'command.policy.make',
         'ProviderMake' => 'command.provider.make',
         'Serve' => 'command.serve',
+        'TestMake'  => 'command.test.make',
     ];
 
     /**
@@ -235,6 +236,16 @@ class LumenGeneratorServiceProvider extends ServiceProvider
     {
         $this->app->singleton('command.serve', function () {
             return new Console\ServeCommand();
+        });
+    }
+
+    /**
+     * Register the command.
+     */
+    protected function registerTestMakeCommand()
+    {
+        $this->app->singleton('command.test.make', function ($app) {
+            return new Console\TestMakeCommand($app['files']);
         });
     }
 
