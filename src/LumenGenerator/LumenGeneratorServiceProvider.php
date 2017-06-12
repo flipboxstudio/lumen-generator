@@ -44,7 +44,7 @@ class LumenGeneratorServiceProvider extends ServiceProvider
         'PolicyMake' => 'command.policy.make',
         'ProviderMake' => 'command.provider.make',
         'Serve' => 'command.serve',
-        'TestMake'  => 'command.test.make',
+        'TestMake' => 'command.test.make',
     ];
 
     /**
@@ -53,10 +53,7 @@ class LumenGeneratorServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerCommands($this->commands);
-
-        if (env('APP_ENV') === 'local') {
-            $this->registerCommands($this->devCommands);
-        }
+        $this->registerCommands($this->devCommands);
     }
 
     /**
