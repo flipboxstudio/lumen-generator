@@ -41,6 +41,7 @@ make:model        Create a new Eloquent model class
 make:policy       Create a new policy class
 make:provider     Create a new service provider class
 make:seeder       Create a new seeder class
+make:test         Create a new test class
 ```
 
 ## Additional Useful Command
