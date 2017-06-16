@@ -2,8 +2,6 @@
 
 namespace Flipbox\LumenGenerator\Console;
 
-use Illuminate\Console\GeneratorCommand;
-
 class TestMakeCommand extends GeneratorCommand
 {
     /**
