@@ -31,13 +31,13 @@ class ListenerMakeCommand extends GeneratorCommand
     /**
      * Execute the console command.
      */
-    public function fire()
+    public function handle()
     {
         if (!$this->option('event')) {
             return $this->error('Missing required option: --event');
         }
 
-        parent::fire();
+        parent::handle();
     }
 
     /**

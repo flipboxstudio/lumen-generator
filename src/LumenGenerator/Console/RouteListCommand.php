@@ -22,13 +22,24 @@ class RouteListCommand extends Command
     protected $description = 'Display all registered routes.';
 
     /**
+     * Get the router.
+     *
+     * @return \Laravel\Lumen\Routing\Router
+     */
+    protected function getRouter()
+    {
+        return isset($this->laravel->router) ? $this->laravel->router : $this->laravel;
+    }
+
+    /**
      * Execute the console command.
      *
      * @return void
      */
-    public function fire()
+    public function handle()
     {
-        $routeCollection = $this->laravel->getRoutes();
+        $router = $this->getRouter();
+        $routeCollection = $router->getRoutes();
         $rows = array();
 
         foreach ($routeCollection as $route) {

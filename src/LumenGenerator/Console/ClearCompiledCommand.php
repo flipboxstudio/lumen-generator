@@ -23,7 +23,7 @@ class ClearCompiledCommand extends Command
     /**
      * Execute the console command.
      */
-    public function fire()
+    public function handle()
     {
         $compiledPath = base_path('bootstrap/cache/compiled.php');
 

@@ -46,7 +46,7 @@ class OptimizeCommand extends Command
     /**
      * Execute the console command.
      */
-    public function fire()
+    public function handle()
     {
         $this->info('Generating optimized class loader');
 
