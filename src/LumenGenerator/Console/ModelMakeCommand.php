@@ -31,9 +31,9 @@ class ModelMakeCommand extends GeneratorCommand
     /**
      * Execute the console command.
      */
-    public function fire()
+    public function handle()
     {
-        if (parent::fire() !== false) {
+        if (parent::handle() !== false) {
             if ($this->option('migration')) {
                 $table = Str::plural(Str::snake(class_basename($this->argument('name'))));
 
