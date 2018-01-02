@@ -45,6 +45,7 @@ class LumenGeneratorServiceProvider extends ServiceProvider
         'ProviderMake' => 'command.provider.make',
         'Serve' => 'command.serve',
         'TestMake' => 'command.test.make',
+        'ResourceMake' => 'command.resource.make',
     ];
 
     /**
@@ -243,6 +244,16 @@ class LumenGeneratorServiceProvider extends ServiceProvider
     {
         $this->app->singleton('command.test.make', function ($app) {
             return new Console\TestMakeCommand($app['files']);
+        });
+    }
+
+    /**
+     * Register the command.
+     */
+    protected function registerResourceMakeCommand()
+    {
+        $this->app->singleton('command.resource.make', function ($app) {
+            return new Console\ResourceMakeCommand($app['files']);
         });
     }
 
