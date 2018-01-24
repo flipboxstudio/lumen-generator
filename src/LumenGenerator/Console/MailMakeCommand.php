@@ -2,6 +2,8 @@
 
 namespace Flipbox\LumenGenerator\Console;
 
+use Symfony\Component\Console\Input\InputOption;
+
 class MailMakeCommand extends GeneratorCommand
 {
     /**
