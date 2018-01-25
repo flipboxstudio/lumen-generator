@@ -19,5 +19,8 @@
         "psr-4": {
             "Flipbox\\LumenGenerator\\": "src/LumenGenerator/"
         }
+    },
+    "suggest": {
+        "illuminate/mail": "Needed to run Mailable generator"
     }
 }
