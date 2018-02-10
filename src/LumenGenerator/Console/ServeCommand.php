@@ -3,7 +3,7 @@
 namespace Flipbox\LumenGenerator\Console;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Process\ProcessUtils;
+use Illuminate\Support\ProcessUtils;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Process\PhpExecutableFinder;
 
@@ -26,6 +26,7 @@ class ServeCommand extends Command
     /**
      * Execute the console command.
      *
+     * @return void
      *
      * @throws \Exception
      */
@@ -33,21 +34,44 @@ class ServeCommand extends Command
     {
         chdir($this->laravel->basePath('public'));
 
-        $host = $this->input->getOption('host');
+        $this->line("<info>Laravel development server started:</info> <http://{$this->host()}:{$this->port()}>");
 
-        $port = $this->input->getOption('port');
+        passthru($this->serverCommand());
+    }
 
-        $base = ProcessUtils::escapeArgument($this->laravel->basePath());
+    /**
+     * Get the full server command.
+     *
+     * @return string
+     */
+    protected function serverCommand()
+    {
+        return sprintf('%s -S %s:%s %s/server.php',
+            ProcessUtils::escapeArgument((new PhpExecutableFinder)->find(false)),
+            $this->host(),
+            $this->port(),
+            ProcessUtils::escapeArgument(base_path())
+        );
+    }
 
-        $binary = ProcessUtils::escapeArgument((new PhpExecutableFinder())->find(false));
+    /**
+     * Get the host for the command.
+     *
+     * @return string
+     */
+    protected function host()
+    {
+        return $this->input->getOption('host');
+    }
 
-        $this->info("Laravel development server started on http://{$host}:{$port}/");
-
-        if (file_exists("{$base}/server.php")) {
-            passthru("{$binary} -S {$host}:{$port} {$base}/server.php");
-        } else {
-            passthru("{$binary} -S {$host}:{$port} -t {$base}/public/");
-        }
+    /**
+     * Get the port for the command.
+     *
+     * @return string
+     */
+    protected function port()
+    {
+        return $this->input->getOption('port');
     }
 
     /**
@@ -58,7 +82,7 @@ class ServeCommand extends Command
     protected function getOptions()
     {
         return [
-            ['host', null, InputOption::VALUE_OPTIONAL, 'The host address to serve the application on.', 'localhost'],
+            ['host', null, InputOption::VALUE_OPTIONAL, 'The host address to serve the application on.', '127.0.0.1'],
 
             ['port', null, InputOption::VALUE_OPTIONAL, 'The port to serve the application on.', 8000],
         ];
