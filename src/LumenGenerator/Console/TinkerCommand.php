@@ -35,7 +35,7 @@ class TinkerCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'tinker';
+    protected $signature = 'tinker {include?}';
 
     /**
      * The console command description.
@@ -68,6 +68,7 @@ class TinkerCommand extends Command
         );
 
         $shell = new Shell($config);
+        $shell->setIncludes([$this->argument('include')]);
 
         $shell->run();
     }
