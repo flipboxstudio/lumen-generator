@@ -35,7 +35,8 @@ class TinkerCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'tinker {include?}';
+    protected $signature = 'tinker 
+                            {include? : Specify an `include` script}';
 
     /**
      * The console command description.
