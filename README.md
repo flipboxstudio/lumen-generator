@@ -55,3 +55,16 @@ route:list        Display all registered routes.
 ```
 
 > **NOTES** `route:list` command has been added via [appzcoder/lumen-route-list](https://github.com/appzcoder/lumen-route-list) package.
+
+## Tinker `include` Argument Usage
+
+`php artisan tinker path/to/tinker/script.php` 
+
+script.php example:
+```
+$environment = app()->environment();
+$output = new Symfony\Component\Console\Output\ConsoleOutput();
+$output->writeln("<info>Hello the app environment is `{$environment}`</info>");
+$output->writeln("<comment>Did something</comment>");
+$output->writeln("<error>Did something bad</error>");
+```
