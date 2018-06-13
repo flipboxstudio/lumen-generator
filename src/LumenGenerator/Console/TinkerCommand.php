@@ -67,9 +67,13 @@ class TinkerCommand extends Command
         $config->getPresenter()->addCasters(
             $this->getCasters()
         );
-
+  
         $shell = new Shell($config);
-        $shell->setIncludes([$this->argument('include')]);
+
+        $include = $this->argument('include');
+        if (file_exists($include)) {
+            $shell->setIncludes([$include]);
+        }
 
         $shell->run();
     }
