@@ -5,7 +5,7 @@
     "require": {
         "illuminate/support": "^5.4",
         "symfony/var-dumper": "^3.1|~4.1",
-        "psy/psysh": "^0.8.3",
+        "psy/psysh": "0.8.*|0.9.*",
         "classpreloader/classpreloader": "^3.0"
     },
     "license": "MIT",
