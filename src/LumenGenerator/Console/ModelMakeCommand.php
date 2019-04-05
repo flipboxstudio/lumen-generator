@@ -33,12 +33,10 @@ class ModelMakeCommand extends GeneratorCommand
      */
     public function handle()
     {
-        if (parent::handle() !== false) {
-            if ($this->option('migration')) {
-                $table = Str::plural(Str::snake(class_basename($this->argument('name'))));
+        if ((parent::handle() !== false) && $this->option('migration')) {
+            $table = Str::plural(Str::snake(class_basename($this->argument('name'))));
 
-                $this->call('make:migration', ['name' => "create_{$table}_table", '--create' => $table]);
-            }
+            $this->call('make:migration', ['name' => "create_{$table}_table", '--create' => $table]);
         }
     }
 

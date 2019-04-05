@@ -28,7 +28,11 @@ class RouteListCommand extends Command
      */
     protected function getRouter()
     {
-        return isset($this->laravel->router) ? $this->laravel->router : $this->laravel;
+        if(isset($this->laravel->router)) {
+            return $this->laravel->router;
+        }
+
+        return $this->laravel;
     }
 
     /**
@@ -80,7 +84,11 @@ class RouteListCommand extends Command
      */
     protected function getNamedRoute(array $action)
     {
-        return (!isset($action['as'])) ? "" : $action['as'];
+        if(!isset($action['as'])) {
+            return '';
+        }
+
+        return $action['as'];
     }
 
     /**
@@ -93,7 +101,7 @@ class RouteListCommand extends Command
             return 'None';
         }
 
-        return current(explode("@", $action['uses']));
+        return current(explode('@', $action['uses']));
     }
 
     /**
@@ -102,17 +110,17 @@ class RouteListCommand extends Command
      */
     protected function getAction(array $action)
     {
-        if (!empty($action['uses'])) {
-            $data = $action['uses'];
-
-            if (($pos = strpos($data, "@")) !== false) {
-                return substr($data, $pos + 1);
-            } else {
-                return "METHOD NOT FOUND";
-            }
-        } else {
+        if (empty($action['uses'])) {
             return 'Closure';
         }
+
+        $data = $action['uses'];
+
+        if(($pos = strpos($data, '@')) !== false) {
+            return substr($data, $pos + 1);
+        }
+
+        return 'METHOD NOT FOUND';
     }
 
     /**
@@ -121,6 +129,14 @@ class RouteListCommand extends Command
      */
     protected function getMiddleware(array $action)
     {
-        return (isset($action['middleware'])) ? (is_array($action['middleware'])) ? join(", ", $action['middleware']) : $action['middleware'] : '';
+        if(!isset($action['middleware'])) {
+            return '';
+        }
+
+        if(is_array($action['middleware'])) {
+            return implode(', ', $action['middleware']);
+        }
+
+        return $action['middleware'];
     }
 }
