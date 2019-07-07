@@ -54,7 +54,7 @@ class ControllerMakeCommand extends GeneratorCommand
             $stub = str_replace('.stub', '.api.stub', $stub);
         }
 
-        $stub = $stub ?? '/stubs/controller.plain.stub';
+        $stub = isset($stub) ? $stub : '/stubs/controller.plain.stub';
 
         return __DIR__.$stub;
     }
