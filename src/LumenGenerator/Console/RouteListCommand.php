@@ -102,9 +102,8 @@ class RouteListCommand extends Command
      */
     protected function getAction(array $action)
     {
-        if (!empty($action['uses'])) {
+        if (!empty($action['uses']) && is_string($action['uses'])) {
             $data = $action['uses'];
-
             if (($pos = strpos($data, "@")) !== false) {
                 return substr($data, $pos + 1);
             } else {
