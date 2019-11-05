@@ -25,6 +25,7 @@ class LumenGeneratorServiceProvider extends ServiceProvider
         'RouteList' => 'command.route.list',
         'ClearCompiled' => 'command.clear.compiled',
         'Optimize' => 'command.optimize',
+        'FactoryMake' => 'command.factory.make',
     ];
 
     /**
@@ -144,6 +145,16 @@ class LumenGeneratorServiceProvider extends ServiceProvider
     {
         $this->app->singleton('command.event.make', function ($app) {
             return new Console\EventMakeCommand($app['files']);
+        });
+    }
+
+    /**
+     * Register the command.
+     */
+    protected function registerFactoryMakeCommand()
+    {
+        $this->app->singleton('command.factory.make', function ($app) {
+            return new Console\FactoryMakeCommand($app['files']);
         });
     }
 
