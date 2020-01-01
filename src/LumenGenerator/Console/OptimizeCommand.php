@@ -60,7 +60,11 @@ class OptimizeCommand extends Command
         if ($this->option('force') || !env('APP_DEBUG')) {
             $this->info('Compiling common classes');
 
-            $this->compileClasses();
+            if (class_exists(Factory::class)) {
+                $this->compileClassesV3();
+            } else {
+                $this->compileClassesV4();
+            }
         } else {
             $this->call('clear-compiled');
         }
@@ -79,7 +83,7 @@ class OptimizeCommand extends Command
             foreach ($this->getClassFiles() as $file) {
                 try {
                     fwrite($handle, $preloader->getCode($file, false)."\n");
-                } catch (V4VisitorException $e) {
+                } catch (V3VisitorException $e) {
                     //
                 }
             }
