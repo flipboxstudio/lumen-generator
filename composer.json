@@ -3,8 +3,8 @@
     "description": "A Lumen Generator You Are Missing",
     "type": "library",
     "require": {
-        "illuminate/support": "^5.4|^6.0",
-        "symfony/var-dumper": "^3.1|^4.1|^4.2|^4.3",
+        "illuminate/support": "^5.4|^6.0|^7.0",
+        "symfony/var-dumper": "^3.1|^4.1|^4.2|^4.3|^5.0",
         "psy/psysh": "0.8.*|0.9.*",
         "classpreloader/classpreloader": "^3.0|^4.0"
     },
