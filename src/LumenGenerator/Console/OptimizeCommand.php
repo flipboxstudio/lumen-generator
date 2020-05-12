@@ -102,7 +102,7 @@ class OptimizeCommand extends Command
         $handle = OutputWriter::openOutputFile(base_path('bootstrap/cache/compiled.php'));
 
         try {
-            OutputWriter::writeOpeningTag($handle, $strictTypes);
+            OutputWriter::writeOpeningTag($handle, false);
 
             foreach ($this->getClassFiles() as $file) {
                 try {
