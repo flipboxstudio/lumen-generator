@@ -2,7 +2,7 @@
 
 namespace DummyNamespace;
 
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class DummyClass extends Resource
 {
