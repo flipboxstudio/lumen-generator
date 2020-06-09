@@ -27,7 +27,7 @@ $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 ## Available Command
 
 ```
-key:generate      Set the application key
+key:generate         Set the application key
 
 make:channel         Create a new channel class
 make:command         Create a new Artisan command
