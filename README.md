@@ -27,21 +27,25 @@ $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 ## Available Command
 
 ```
-key:generate      Set the application key
+key:generate         Set the application key
 
-make:command      Create a new Artisan command
-make:controller   Create a new controller class
-make:event        Create a new event class
-make:job          Create a new job class
-make:listener     Create a new event listener class
-make:mail         Create a new email class
-make:middleware   Create a new middleware class
-make:migration    Create a new migration file
-make:model        Create a new Eloquent model class
-make:policy       Create a new policy class
-make:provider     Create a new service provider class
-make:seeder       Create a new seeder class
-make:test         Create a new test class
+make:channel         Create a new channel class
+make:command         Create a new Artisan command
+make:controller      Create a new controller class
+make:event           Create a new event class
+make:job             Create a new job class
+make:listener        Create a new event listener class
+make:mail            Create a new email class
+make:middleware      Create a new middleware class
+make:migration       Create a new migration file
+make:model           Create a new Eloquent model class
+make:notification    Create a new notification class
+make:policy          Create a new policy class
+make:provider        Create a new service provider class
+make:seeder          Create a new seeder class
+make:test            Create a new test class
+
+notifications:table  Create a migration for the notifications table
 ```
 
 ## Additional Useful Command

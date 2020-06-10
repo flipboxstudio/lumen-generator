@@ -48,6 +48,9 @@ class LumenGeneratorServiceProvider extends ServiceProvider
         'Serve' => 'command.serve',
         'TestMake' => 'command.test.make',
         'ResourceMake' => 'command.resource.make',
+        'NotificationMake' => 'command.notification.make',
+        'NotificationTable' => 'command.notification.table',
+        'ChannelMake' => 'command.channel.make',
     ];
 
     /**
@@ -296,6 +299,26 @@ class LumenGeneratorServiceProvider extends ServiceProvider
     {
         $this->app->singleton('command.notification.table', function ($app) {
             return new Console\NotificationTableCommand($app['files'], $app['composer']);
+        });
+    }
+
+    /**
+     * Register the command.
+     */
+    protected function registerNotificationMakeCommand()
+    {
+        $this->app->singleton('command.notification.make', function ($app) {
+            return new Console\NotificationMakeCommand($app['files']);
+        });
+    }
+
+    /**
+     * Register the command.
+     */
+    protected function registerChannelMakeCommand()
+    {
+        $this->app->singleton('command.channel.make', function ($app) {
+            return new Console\ChannelMakeCommand($app['files']);
         });
     }
 
