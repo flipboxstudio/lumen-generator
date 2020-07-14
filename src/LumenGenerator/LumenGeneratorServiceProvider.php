@@ -38,6 +38,7 @@ class LumenGeneratorServiceProvider extends ServiceProvider
         'ControllerMake' => 'command.controller.make',
         'EventMake' => 'command.event.make',
         'ExceptionMake' => 'command.exception.make',
+        'RequestMake' => 'command.request.make',
         'JobMake' => 'command.job.make',
         'ListenerMake' => 'command.listener.make',
         'MailMake' => 'command.mail.make',
@@ -219,6 +220,16 @@ class LumenGeneratorServiceProvider extends ServiceProvider
     {
         $this->app->singleton('command.middleware.make', function ($app) {
             return new Console\MiddlewareMakeCommand($app['files']);
+        });
+    }
+
+    /**
+     * Register the command.
+     */
+    protected function registerRequestMakeCommand()
+    {
+        $this->app->singleton('command.request.make', function ($app) {
+            return new Console\RequestMakeCommand($app['files']);
         });
     }
 
