@@ -40,6 +40,7 @@ make:middleware      Create a new middleware class
 make:migration       Create a new migration file
 make:model           Create a new Eloquent model class
 make:notification    Create a new notification class
+make:pipe            Create a new pipe class
 make:policy          Create a new policy class
 make:provider        Create a new service provider class
 make:seeder          Create a new seeder class
