@@ -53,6 +53,7 @@ class LumenGeneratorServiceProvider extends ServiceProvider
         'NotificationMake' => 'command.notification.make',
         'NotificationTable' => 'command.notification.table',
         'ChannelMake' => 'command.channel.make',
+        'SchemaDump' => 'command.schema.dump',
     ];
 
     /**
@@ -341,6 +342,16 @@ class LumenGeneratorServiceProvider extends ServiceProvider
     {
         $this->app->singleton('command.channel.make', function ($app) {
             return new Console\ChannelMakeCommand($app['files']);
+        });
+    }
+
+    /**
+     * Register the command.
+     */
+    protected function registerSchemaDumpCommand()
+    {
+        $this->app->singleton('command.schema.dump', function () {
+            return new Console\DumpCommand();
         });
     }
 
