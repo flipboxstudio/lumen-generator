@@ -46,6 +46,7 @@ make:provider        Create a new service provider class
 make:request         Create a new form request class
 make:seeder          Create a new seeder class
 make:test            Create a new test class
+make:cast            Create a new cast class
 
 notifications:table  Create a migration for the notifications table
 ```
