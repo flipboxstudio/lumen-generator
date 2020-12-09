@@ -29,10 +29,13 @@ $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 ```
 key:generate         Set the application key
 
+make:cast            Create a new custom Eloquent cast class
 make:channel         Create a new channel class
 make:command         Create a new Artisan command
 make:controller      Create a new controller class
 make:event           Create a new event class
+make:exception       Create a new custom exception class
+make:factory         Create a new model factory
 make:job             Create a new job class
 make:listener        Create a new event listener class
 make:mail            Create a new email class
@@ -44,11 +47,13 @@ make:pipe            Create a new pipe class
 make:policy          Create a new policy class
 make:provider        Create a new service provider class
 make:request         Create a new form request class
+make:resource        Create a new resource
 make:seeder          Create a new seeder class
 make:test            Create a new test class
-make:cast            Create a new cast class
 
 notifications:table  Create a migration for the notifications table
+
+schema:dump          Dump the given database schema
 ```
 
 ## Additional Useful Command
@@ -65,7 +70,7 @@ route:list        Display all registered routes.
 
 ## Tinker `include` Argument Usage
 
-`php artisan tinker path/to/tinker/script.php` 
+`php artisan tinker path/to/tinker/script.php`
 
 script.php example:
 ```
