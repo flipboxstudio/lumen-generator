@@ -21,5 +21,8 @@
         "psr-4": {
             "Flipbox\\LumenGenerator\\": "src/LumenGenerator/"
         }
+    },
+    "suggest": {
+        "anik/form-request": "Required to use form request in Lumen."
     }
 }
