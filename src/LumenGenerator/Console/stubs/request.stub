@@ -11,7 +11,7 @@ class DummyClass extends FormRequest
      *
      * @return bool
      */
-    protected function authorize()
+    protected function authorize(): bool
     {
         return false;
     }
@@ -21,7 +21,7 @@ class DummyClass extends FormRequest
      *
      * @return array
      */
-    protected function rules()
+    protected function rules(): array
     {
         return [
             //
