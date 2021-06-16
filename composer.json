@@ -3,6 +3,7 @@
     "description": "A Lumen Generator You Are Missing",
     "type": "library",
     "require": {
+        "php": "^7.3|^8.0",
         "illuminate/support": "^5.5|^6.0|^7.0|^8.0|^8.17",
         "illuminate/console": "^5.5|^6.0|^7.0|^8.0|^8.17",
         "illuminate/filesystem": "^5.5|^6.0|^7.0|^8.0|^8.17",
