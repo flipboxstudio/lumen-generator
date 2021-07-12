@@ -48,6 +48,7 @@ make:policy          Create a new policy class
 make:provider        Create a new service provider class
 make:request         Create a new form request class
 make:resource        Create a new resource
+make:rule            Create a new rule
 make:seeder          Create a new seeder class
 make:test            Create a new test class
 
