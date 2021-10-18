@@ -55,6 +55,7 @@ class LumenGeneratorServiceProvider extends ServiceProvider
         'ChannelMake' => 'command.channel.make',
         'SchemaDump' => 'command.schema.dump',
         'CastMake' => 'command.cast.make',
+        'RuleMake' => 'command.rule.make',
     ];
 
     /**
@@ -360,6 +361,13 @@ class LumenGeneratorServiceProvider extends ServiceProvider
     {
         $this->app->singleton('command.cast.make', function ($app) {
             return new Console\CastMakeCommand($app['files']);
+        });
+    }
+
+    protected function registerRuleMakeCommand()
+    {
+        $this->app->singleton('command.rule.make', function ($app) {
+            return new Console\RuleMakeCommand($app['files']);
         });
     }
 
