@@ -1,6 +1,6 @@
 {
-    "name": "flipbox/lumen-generator",
-    "description": "A Lumen Generator You Are Missing",
+    "name": "ivampiresp/lumen-generator",
+    "description": "A Lumen Generator You Are Missing (forked from flipboxstudio/lumen-generator)",
     "type": "library",
     "require": {
         "illuminate/support": "^5.5|^6.0|^7.0|^8.0|^8.17|^9.0",
@@ -13,8 +13,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Krisan Alfa Timur",
-            "email": "krisan47@gmail.com"
+            "name": "iVampireSP",
+            "email": "im@ivampiresp.com"
         }
     ],
     "autoload": {
