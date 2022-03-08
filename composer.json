@@ -19,7 +19,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Flipbox\\LumenGenerator\\": "src/LumenGenerator/"
+            "iVampireSP\\LumenGenerator\\": "src/LumenGenerator/"
         }
     },
     "suggest": {
