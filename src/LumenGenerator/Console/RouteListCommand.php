@@ -59,12 +59,12 @@ class RouteListCommand extends Command
             foreach ($routes as $route) {
                 foreach ($route->getRoutes() as $innerRoute) {
                     $rows[] = [
-                        'verb' => implode($innerRoute->getMethods(), '|'),
+                        'verb' => implode('|', $innerRoute->getMethods()),
                         'path' => $innerRoute->getPath(),
                         'namedRoute' => $innerRoute->getName(),
                         'controller' => get_class($innerRoute->getControllerInstance()),
                         'action' => $this->getAction($innerRoute->getAction()),
-                        'middleware' => implode($innerRoute->getMiddleware(), '|'),
+                        'middleware' => implode('|', $innerRoute->getMiddleware()),
                     ];
                 }
             }
@@ -102,9 +102,8 @@ class RouteListCommand extends Command
      */
     protected function getAction(array $action)
     {
-        if (!empty($action['uses'])) {
+        if (!empty($action['uses']) && is_string($action['uses'])) {
             $data = $action['uses'];
-
             if (($pos = strpos($data, "@")) !== false) {
                 return substr($data, $pos + 1);
             } else {

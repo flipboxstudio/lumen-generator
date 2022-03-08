@@ -35,7 +35,8 @@ class TinkerCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'tinker';
+    protected $signature = 'tinker 
+                            {include? : Specify an `include` script}';
 
     /**
      * The console command description.
@@ -66,8 +67,13 @@ class TinkerCommand extends Command
         $config->getPresenter()->addCasters(
             $this->getCasters()
         );
-
+  
         $shell = new Shell($config);
+
+        $include = $this->argument('include');
+        if (file_exists($include)) {
+            $shell->setIncludes([$include]);
+        }
 
         $shell->run();
     }

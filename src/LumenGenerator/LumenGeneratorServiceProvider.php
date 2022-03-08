@@ -25,6 +25,7 @@ class LumenGeneratorServiceProvider extends ServiceProvider
         'RouteList' => 'command.route.list',
         'ClearCompiled' => 'command.clear.compiled',
         'Optimize' => 'command.optimize',
+        'FactoryMake' => 'command.factory.make',
     ];
 
     /**
@@ -36,16 +37,25 @@ class LumenGeneratorServiceProvider extends ServiceProvider
         'ConsoleMake' => 'command.console.make',
         'ControllerMake' => 'command.controller.make',
         'EventMake' => 'command.event.make',
+        'ExceptionMake' => 'command.exception.make',
+        'RequestMake' => 'command.request.make',
         'JobMake' => 'command.job.make',
         'ListenerMake' => 'command.listener.make',
         'MailMake' => 'command.mail.make',
         'MiddlewareMake' => 'command.middleware.make',
+        'PipeMake' => 'command.pipe.make',
         'ModelMake' => 'command.model.make',
         'PolicyMake' => 'command.policy.make',
         'ProviderMake' => 'command.provider.make',
         'Serve' => 'command.serve',
         'TestMake' => 'command.test.make',
         'ResourceMake' => 'command.resource.make',
+        'NotificationMake' => 'command.notification.make',
+        'NotificationTable' => 'command.notification.table',
+        'ChannelMake' => 'command.channel.make',
+        'SchemaDump' => 'command.schema.dump',
+        'CastMake' => 'command.cast.make',
+        'RuleMake' => 'command.rule.make',
     ];
 
     /**
@@ -150,6 +160,26 @@ class LumenGeneratorServiceProvider extends ServiceProvider
     /**
      * Register the command.
      */
+    protected function registerExceptionMakeCommand()
+    {
+        $this->app->singleton('command.exception.make', function ($app) {
+            return new Console\ExceptionMakeCommand($app['files']);
+        });
+    }
+
+    /**
+     * Register the command.
+     */
+    protected function registerFactoryMakeCommand()
+    {
+        $this->app->singleton('command.factory.make', function ($app) {
+            return new Console\FactoryMakeCommand($app['files']);
+        });
+    }
+
+    /**
+     * Register the command.
+     */
     protected function registerJobMakeCommand()
     {
         $this->app->singleton('command.job.make', function ($app) {
@@ -194,6 +224,26 @@ class LumenGeneratorServiceProvider extends ServiceProvider
     {
         $this->app->singleton('command.middleware.make', function ($app) {
             return new Console\MiddlewareMakeCommand($app['files']);
+        });
+    }
+
+    /**
+     * Register the command.
+     */
+    protected function registerRequestMakeCommand()
+    {
+        $this->app->singleton('command.request.make', function ($app) {
+            return new Console\RequestMakeCommand($app['files']);
+        });
+    }
+
+    /**
+     * Register the command.
+     */
+    protected function registerPipeMakeCommand()
+    {
+        $this->app->singleton('command.pipe.make', function ($app) {
+            return new Console\PipeMakeCommand($app['files']);
         });
     }
 
@@ -274,6 +324,50 @@ class LumenGeneratorServiceProvider extends ServiceProvider
     {
         $this->app->singleton('command.notification.table', function ($app) {
             return new Console\NotificationTableCommand($app['files'], $app['composer']);
+        });
+    }
+
+    /**
+     * Register the command.
+     */
+    protected function registerNotificationMakeCommand()
+    {
+        $this->app->singleton('command.notification.make', function ($app) {
+            return new Console\NotificationMakeCommand($app['files']);
+        });
+    }
+
+    /**
+     * Register the command.
+     */
+    protected function registerChannelMakeCommand()
+    {
+        $this->app->singleton('command.channel.make', function ($app) {
+            return new Console\ChannelMakeCommand($app['files']);
+        });
+    }
+
+    /**
+     * Register the command.
+     */
+    protected function registerSchemaDumpCommand()
+    {
+        $this->app->singleton('command.schema.dump', function () {
+            return new Console\DumpCommand();
+        });
+    }
+
+    protected function registerCastMakeCommand()
+    {
+        $this->app->singleton('command.cast.make', function ($app) {
+            return new Console\CastMakeCommand($app['files']);
+        });
+    }
+
+    protected function registerRuleMakeCommand()
+    {
+        $this->app->singleton('command.rule.make', function ($app) {
+            return new Console\RuleMakeCommand($app['files']);
         });
     }
 

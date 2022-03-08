@@ -5,8 +5,11 @@ namespace Flipbox\LumenGenerator\Console;
 use ClassPreloader\Factory;
 use Illuminate\Console\Command;
 use Illuminate\Support\Composer;
+use ClassPreloader\OutputWriter;
+use ClassPreloader\CodeGenerator;
 use Symfony\Component\Console\Input\InputOption;
-use ClassPreloader\Exceptions\VisitorExceptionInterface;
+use ClassPreloader\Exception\VisitorExceptionInterface as V4VisitorException;
+use ClassPreloader\Exceptions\VisitorExceptionInterface as V3VisitorException;
 
 class OptimizeCommand extends Command
 {
@@ -57,7 +60,11 @@ class OptimizeCommand extends Command
         if ($this->option('force') || !env('APP_DEBUG')) {
             $this->info('Compiling common classes');
 
-            $this->compileClasses();
+            if (class_exists(Factory::class)) {
+                $this->compileClassesV3();
+            } else {
+                $this->compileClassesV4();
+            }
         } else {
             $this->call('clear-compiled');
         }
@@ -66,21 +73,48 @@ class OptimizeCommand extends Command
     /**
      * Generate the compiled class file.
      */
-    protected function compileClasses()
+    protected function compileClassesV3()
     {
         $preloader = (new Factory())->create(['skip' => true]);
 
         $handle = $preloader->prepareOutput(base_path('bootstrap/cache/compiled.php'));
 
-        foreach ($this->getClassFiles() as $file) {
-            try {
-                fwrite($handle, $preloader->getCode($file, false)."\n");
-            } catch (VisitorExceptionInterface $e) {
-                //
+        try {
+            foreach ($this->getClassFiles() as $file) {
+                try {
+                    fwrite($handle, $preloader->getCode($file, false)."\n");
+                } catch (V3VisitorException $e) {
+                    //
+                }
             }
+        } finally {
+            fclose($handle);
         }
+    }
 
-        fclose($handle);
+    /**
+     * Generate the compiled class file.
+     */
+    protected function compileClassesV4()
+    {
+        $codeGen = CodeGenerator::create(['skip' => true]);
+
+        $handle = OutputWriter::openOutputFile(base_path('bootstrap/cache/compiled.php'));
+
+        try {
+            OutputWriter::writeOpeningTag($handle, false);
+
+            foreach ($this->getClassFiles() as $file) {
+                try {
+                    $code = $codeGen->getCode($file, false);
+                    OutputWriter::writeFileContent($handle, $code."\n");
+                } catch (V4VisitorException $e) {
+                    //
+                }
+            }
+        } finally {
+            OutputWriter::closeHandle($handle);
+        }
     }
 
     /**
