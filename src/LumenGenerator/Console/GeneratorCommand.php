@@ -172,7 +172,7 @@ abstract class GeneratorCommand extends Command
      */
     protected function replaceNamespace(&$stub, $name)
     {
-        $userModelNamespace = $this->userProviderModel() ?? $this->getModelNamespace() . 'User';
+        $userModelNamespace = $this->userProviderModel() ?? $this->qualifyModel('User');
 
         $stub = str_replace(
             ['DummyNamespace', 'DummyRootNamespace', 'NamespacedDummyUserModel'],
@@ -274,16 +274,25 @@ abstract class GeneratorCommand extends Command
     }
 
     /**
-     * Get the model's namespace baed on the app/Models folder.
+     * Qualify the given model class base name.
      *
+     * @param  string  $model
      * @return string
      */
-    protected function getModelNamespace()
+    protected function qualifyModel(string $model)
     {
-        $modelsNameSpace = is_dir($this->laravel->basePath('app/Models'))
-            ? $this->rootNamespace() . 'Models\\'
-            : $this->rootNamespace();
+        $model = ltrim($model, '\\/');
 
-        return $modelsNameSpace;
+        $model = str_replace('/', '\\', $model);
+
+        $rootNamespace = $this->rootNamespace();
+
+        if (Str::startsWith($model, $rootNamespace)) {
+            return $model;
+        }
+
+        return is_dir($this->laravel->basePath('app/Models'))
+                    ? $rootNamespace.'Models\\'.$model
+                    : $rootNamespace.$model;
     }
 }
