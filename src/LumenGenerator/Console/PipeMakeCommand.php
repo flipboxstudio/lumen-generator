@@ -1,5 +1,7 @@
 <?php
 
+
+
 namespace Flipbox\LumenGenerator\Console;
 
 class PipeMakeCommand extends GeneratorCommand
