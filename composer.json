@@ -3,9 +3,9 @@
     "description": "A Lumen Generator You Are Missing",
     "type": "library",
     "require": {
-        "illuminate/support": "^6.0|^7.0|^8.0|^8.17|^9.0|^10.0|^11.0",
-        "illuminate/console": "^6.0|^7.0|^8.0|^8.17|^9.0|^10.0|^11.0",
-        "illuminate/filesystem": "^6.0|^7.0|^8.0|^8.17|^9.0|^10.0|^11.0",
+        "illuminate/support": "^6.0|^7.0|^8.0|^8.17|^9.0|^10.0|^11.0|^12.0",
+        "illuminate/console": "^6.0|^7.0|^8.0|^8.17|^9.0|^10.0|^11.0|^12.0",
+        "illuminate/filesystem": "^6.0|^7.0|^8.0|^8.17|^9.0|^10.0|^11.0|^12.0",
         "symfony/var-dumper": "^5.1|^5.2|^6.0|^7.0",
         "psy/psysh": "^0.12",
         "classpreloader/classpreloader": "^3.0|^4.0|^4.2"
